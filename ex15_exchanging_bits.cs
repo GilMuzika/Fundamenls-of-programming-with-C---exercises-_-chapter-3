@@ -54,6 +54,10 @@ namespace CSharp_Shell
                {
                   // we need to change the bit to 0
                   Console.WriteLine($"We need to change the bit on position {position1} from 1 to 0");
+                  /*
+                  נקודה חשובה!
+                  
+                  */
                   
                   num =  (num ^ (1 << position1)); Console.WriteLine($"{num}");
                }
