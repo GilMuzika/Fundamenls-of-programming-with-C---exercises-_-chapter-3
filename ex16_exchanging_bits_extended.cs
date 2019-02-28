@@ -10,33 +10,24 @@ namespace CSharp_Shell
     {
         public static void Main(string[] args) 
         {
-           int num = 60;
-           int position1 = 3;
-           int position2 = 4;
-           int position3 = 5;
            
-           int changePosition1 = 24;
-           int changePosition2 = 25;
-           int changePosition3 = 26;
+           int[] arrayOfNumbers = (int[])PleaseEnterSomeNumbers(4).Clone();
+           
+           int number = arrayOfNumbers[0];
+           int firstPosition = arrayOfNumbers[1];
+           int firstChangePosition = arrayOfNumbers[2];
+           int stopping = arrayOfNumbers[3];
            
            
-           /* for (int i = 0; i < 3; i++) 
+            for (int i = 0; i < stopping; i++) 
                {
-                   num = ChangingPosition ()
-               } */
+                   number = ChangingPosition (number, firstPosition, firstChangePosition);
+                   firstPosition++;
+                   firstChangePosition++;
+               } 
+            Console.WriteLine("\n| "+number+" | ");
             
             
-            int numChanged = ChangingPosition(num, position1, changePosition1);
-           
-            Console.WriteLine("\n| "+numChanged+" | ");
-            
-            numChanged = ChangingPosition(numChanged, position2, changePosition2);
-           
-            Console.WriteLine("\n| "+numChanged+" | ");
-            
-            numChanged = ChangingPosition(numChanged, position3, changePosition3);
-           
-            Console.WriteLine("\n| "+numChanged+" | ");
             
         }
         
@@ -98,6 +89,30 @@ namespace CSharp_Shell
                 else flag = false;
                 return flag;
             }
+            
+            
+            
+        static int[] PleaseEnterSomeNumbers(int iterations)
+        {
+
+            if (iterations == 1) { Console.WriteLine("Please enter one number:\n"); }
+            else { Console.WriteLine("Please enter {0} numbers:\n", iterations); }
+
+            int[] arriterations = new int[iterations];
+
+            for (int i = 0; i < iterations; i++)
+            {
+                if (i > 0) { Console.Clear(); }
+                if (i != 0) { Console.WriteLine("Please enter a number: \n"); }
+                int line;
+            EnterNumber:
+                if (Int32.TryParse(Console.ReadLine(), out line)) { arriterations[i] = line; }
+                else { Console.WriteLine("\n This is not a number! \nPlease enter only numbers. \nNow lets try again: \n"); goto EnterNumber; }
+                //Console.Clear();
+            }
+
+            return arriterations;
+        }
             
     }
 }
